@@ -50,5 +50,8 @@ It's located in Appearance > Customize > Sticky Header by ThematoSoup.
 
 == Changelog ==
 
+= 1.0.1 =
+* Fixed header’s z-index.
+
 = 1.0 =
 * First version.
