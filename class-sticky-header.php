@@ -24,7 +24,7 @@ class Sticky_Header {
 	 *
 	 * @var     string
 	 */
-	const VERSION = '1.0.0';
+	const VERSION = '1.2.1';
 
 	/**
 	 * Unique identifier for your plugin.
@@ -118,7 +118,8 @@ class Sticky_Header {
 	 * @since    1.0.0
 	 */
 	public function enqueue_styles() {
-		wp_enqueue_style( $this->plugin_slug . '-plugin-styles', plugins_url( 'css/public.css', __FILE__ ), array(), self::VERSION );
+		$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+		wp_enqueue_style( $this->plugin_slug . '-plugin-styles', plugins_url( "css/public$min.css", __FILE__ ), array(), self::VERSION );
 	}
 
 	/**
@@ -127,7 +128,8 @@ class Sticky_Header {
 	 * @since    1.0.0
 	 */
 	public function enqueue_scripts() {
-		wp_enqueue_script( $this->plugin_slug . '-plugin-script', plugins_url( 'js/public.js', __FILE__ ), array( 'jquery' ), self::VERSION );
+		$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+		wp_enqueue_script( $this->plugin_slug . '-plugin-script', plugins_url( "js/public$min.js", __FILE__ ), array( 'jquery' ), self::VERSION );
 		
 		// Send plugin settings to JS file.
 		$plugin_settings = get_option( 'thsp_sticky_header' );
